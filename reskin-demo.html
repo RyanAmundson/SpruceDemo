@@ -1,0 +1,381 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="Cache-control" content="public">
+
+      <title>Example Scene</title>
+      <link rel="manifest" href="/manifest.json">
+      <script src="https://rawgit.com/aframevr/aframe/3620e8e/dist/aframe-master.min.js"></script>
+      <script src="https://rawgit.com/takahirox/aframe-outline/master/build/aframe-outline.min.js"></script>
+      <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+      <script>
+        function NavigateTo(end){
+          // console.log(end)
+          var end = document.getElementById(end).getAttribute('position');
+          var camera = document.getElementById('camera');
+          camera.setAttribute('position', end);
+        }
+        AFRAME.registerComponent('cursor-listener', {
+          init: function () {
+            this.el.addEventListener('click', function (evt) {
+
+                    // console.log(evt)
+                    NavigateTo(evt.detail.target.dataset.goto)
+                    document.getElementById(evt.detail.target.dataset.goto).setAttribute("visible", "true");
+                    evt.srcElement.parentElement.setAttribute("visible", "false");
+            });
+          }
+        });
+        AFRAME.registerComponent('sky', {
+          init: function () {
+            this.el.addEventListener('animationend', function (evt) {
+             
+            });
+          }
+        });
+        
+
+
+      </script>
+   </head>
+   <body class="a-body aframe-inspector-opened">
+      <a-scene outline="color: #000;" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" auto-enter-vr="">
+      <a-assets>
+        <a-asset-item id="down-arrow-obj" src="./ResizedPhotos/Arrow1.obj"></a-asset-item>
+
+        <img crossorigin src="./ResizedPhotos/scene1_1.jpg", id="scene1_1">
+        <img crossorigin src="./ResizedPhotos/scene1_2.jpg", id="scene1_2">
+        <img crossorigin src="./ResizedPhotos/scene1_3.jpg", id="scene1_3">
+        <img crossorigin src="./ResizedPhotos/scene1_4.jpg", id="scene1_4">
+        <img crossorigin src="./ResizedPhotos/scene1_5.jpg", id="scene1_5">
+        <img crossorigin src="./ResizedPhotos/scene1_6.jpg", id="scene1_6">
+       <img crossorigin src="./ResizedPhotos/scene1_7.jpg", id="scene1_7">
+        <img crossorigin src="./ResizedPhotos/scene1_8.jpg", id="scene1_8">
+        <img crossorigin src="./ResizedPhotos/scene1_9.jpg", id="scene1_9">
+        <img crossorigin src="./ResizedPhotos/scene1_10.jpg", id="scene1_10">
+        <img crossorigin src="./ResizedPhotos/scene1_11.jpg", id="scene1_11">
+        <img crossorigin src="./ResizedPhotos/scene1_12.jpg", id="scene1_12">
+        <img crossorigin src="./ResizedPhotos/scene1_13.jpg", id="scene1_13">
+        <img crossorigin src="./ResizedPhotos/scene1_14.jpg", id="scene1_14">
+        <img crossorigin src="./ResizedPhotos/scene1_15.jpg", id="scene1_15">
+        <img crossorigin src="./ResizedPhotos/scene1_16.jpg", id="scene1_16">
+        <img crossorigin src="./ResizedPhotos/scene1_17.jpg", id="scene1_17">
+        <img crossorigin src="./ResizedPhotos/scene1_18.jpg", id="scene1_18">
+        <img crossorigin src="./ResizedPhotos/scene1_19.jpg", id="scene1_19">
+        <img crossorigin src="./ResizedPhotos/scene1_21.jpg", id="scene1_21">
+        <img crossorigin src="./ResizedPhotos/scene1_22.jpg", id="scene1_22">
+        <img crossorigin src="./ResizedPhotos/scene1_23.jpg", id="scene1_23">
+        <img crossorigin src="./ResizedPhotos/scene1_24.jpg", id="scene1_24">
+        <img crossorigin src="./ResizedPhotos/scene1_25.jpg", id="scene1_25">
+        <img id="boxTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+
+
+            <a-mixin id="cone" material="color: red"></a-mixin>
+            <a-mixin id="blue" material="color: blue"></a-mixin>
+
+      </a-assets>
+
+        <a-sky color="#3c3c3c" position="" rotation="" scale="" visible="" material="" geometry=""></a-sky>
+        <a-entity light="type: ambient; color: #BBB"></a-entity>
+          
+        <a-entity camera id='camera' look-controls="reverseMouseDrag: true;" position="40 0 0">
+          <a-entity cursor="fuse: true; fuseTimeout: 1000"
+                    position="0 0 -1"
+                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                    material="color: blue; shader: flat">
+                    <a-animation begin="click" easing="ease-in" attribute="scale"
+                     fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="4000"></a-animation>
+                <a-animation begin="fusing" easing="ease-in" attribute="scale"
+                     fill="forwards" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
+          </a-entity>
+        </a-entity>
+
+        <!-- <a-sky visible="false" sky  src="#scene1_1" id="sky1" position="0 0 0" radius="10" material="opacity:1"> -->
+          <!--<a-animation begin="click" attribute="material.opacity" dur"2000" to="0"></a-animation>
+          <a-animation begin="click" attribute="visible" delay="2000"  easing="ease-out" dur"1000" to="false" ></a-animation>
+          <a-animation  attribute="visible"  easing="ease-out" dur="1000" to="true" ></a-animation>
+          <a-animation  attribute="material.opacity" delay="1000" dur="2000" to="1"></a-animation>-->
+          <!-- <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky2" cursor-listener position="-8 0 0"> -->
+            <!-- <a-animation attribute="position" from="-8 0.1 0" to="-8 0 0" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation> -->
+          <!-- </a-cone> -->
+
+          <!-- </a-entity> -->
+         <!-- </a-sky> -->
+        <!-- <a-sky  visible="false" src="#scene1_2" id="sky2" position="20 0 0" radius="10"  material="opacity:0"> -->
+                    <!--<a-animation begin="click" attribute="material.opacity" dur"2000" to="0"></a-animation>
+          <a-animation begin="click" attribute="visible" delay="2000"  easing="ease-out" dur"2000" to="false" ></a-animation>
+          <a-animation  attribute="visible"  easing="ease-out" dur="1000" to="true" ></a-animation>
+          <a-animation  attribute="material.opacity" delay="1000" dur="2000" to="1"></a-animation>-->
+          <!-- <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky1" cursor-listener position="-2.44 0 5.26" ></a-entity> -->
+          <!-- <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky3" cursor-listener position="6.36 0 2.05" ></a-entity> -->
+        <!-- </a-sky> -->
+<!--         <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky2" cursor-listener position="-8 0 0">
+            <a-animation attribute="position" from="-8 0.1 0" to="-8 0 0" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+ -->
+
+
+
+        <a-sky  visible="true" src="#scene1_3" id="sky3" position="40 0 0" radius="10" >
+          <a-cone opacity="0.6" color="white" radius-bottom="0" radius-top="0.76" height="1.62" data-goTo="sky4" cursor-listener position="-5.239 -1.004 1.092" >
+            <!--<a-animation attribute="scale" from="1 1 1" to="0.8 0.8 0.8" repeat="indefinite" dur="3000" easing="ease-elastic" direction="alternate"></a-animation>-->
+            <a-animation attribute="position" to="-5.239 -2 1.092" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-circle color="#CCC" rotation="90 0 0" scale="0.1 0.1 0.1" position="-5.239 -7.835 1.092" radius="4">
+            <a-animation attribute="scale" from="0.1 0.1 0.1" to="0.2 0.2 0.2" repeat="indefinite" dur="3000" easing="ease" direction="alternate"></a-animation>
+          </a-circle>
+        </a-sky>
+
+<!--==============================================================================================================================================================================================-->
+
+        <a-sky  visible="false" src="#scene1_4" id="sky4" position="80 0 0" radius="10">
+          <a-cone opacity="0.6" color="white" radius-bottom="0" radius-top="0.66" height="1.3" data-goTo="sky3" cursor-listener position="3.2 -1.1 -5.45" >
+            <a-animation attribute="position" to="2.92 -2 -4.45" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-circle color="#CCC" rotation="90 0 0" scale="0.1 0.1 0.1" position="3.2 -7.1 -5.45" radius="4">
+            <a-animation attribute="scale" from="0.1 0.1 0.1" to="0.2 0.2 0.2" repeat="indefinite" dur="3000" easing="ease" direction="alternate"></a-animation>
+          </a-circle>
+
+          <a-cone opacity="0.6" color="white" radius-bottom="0" radius-top="0.76" height="1.62" data-goTo="sky5" cursor-listener position="-8 -1.61 -4.34" >
+            <a-animation attribute="position" to="-8 -2.61 -4.34" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-circle color="#CCC" rotation="90 0 0" scale="0.1 0.1 0.1" position="-8 -6.61 -4.34" radius="4">
+            <a-animation attribute="scale" from="0.1 0.1 0.1" to="0.2 0.2 0.2" repeat="indefinite" dur="3000" easing="ease" direction="alternate"></a-animation>
+          </a-circle>
+
+          <a-cone opacity="0.6" color="white" radius-bottom="0" radius-top="0.76" height="1.62" data-goTo="sky10" cursor-listener position="-6.64 -1.6 4.23" >
+            <a-animation attribute="position" to="-6.64 -2.6 4.23" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-circle color="#CCC" rotation="90 0 0" scale="0.1 0.1 0.1" position="-6.64 -6.6 4.23" radius="4">
+            <a-animation attribute="scale" from="0.1 0.1 0.1" to="0.2 0.2 0.2" repeat="indefinite" dur="3000" easing="ease" direction="alternate"></a-animation>
+          </a-circle>
+
+          <a-cone opacity="0.6" color="white" radius-bottom="0" radius-top="0.76" height="1.62" data-goTo="sky7" cursor-listener position="6.74 -1.6 -1.77" >
+            <a-animation attribute="position" to="6.74 -2.6 -1.77" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-circle color="#CCC" rotation="90 0 0" scale="0.1 0.1 0.1" position="6.74 -6.6 -1.77" radius="4">
+            <a-animation attribute="scale" from="0.1 0.1 0.1" to="0.2 0.2 0.2" repeat="indefinite" dur="3000" easing="ease" direction="alternate"></a-animation>
+          </a-circle>
+
+        </a-sky>
+
+
+
+
+
+<!--==============================================================================================================================================================================================-->
+
+
+
+
+
+
+        <a-sky visible="false"  src="#scene1_7" id="sky7" position="140 0 0" radius="10" >
+
+          <a-cone opacity="0.6" color="white" radius-bottom="0" radius-top="0.76" height="1.62" data-goTo="sky8" cursor-listener position="7.64 -1.6 -1.47" >
+            <a-animation attribute="position" to="7.64 -2.6 -1.47" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-circle color="#CCC" rotation="90 0 0" scale="0.1 0.1 0.1" position="7.64 -4.6 -1.47" radius="4">
+            <a-animation attribute="scale" from="0.1 0.1 0.1" to="0.2 0.2 0.2" repeat="indefinite" dur="3000" easing="ease" direction="alternate"></a-animation>
+          </a-circle>
+
+          <a-cone opacity="0.6" color="white" radius-bottom="0" radius-top="0.76" height="1.62" data-goTo="sky4" cursor-listener position="-0.63 -1.6 6.01" >
+            <a-animation attribute="position" to="-0.63 -2.6 6.01" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-circle color="#CCC" rotation="90 0 0" scale="0.1 0.1 0.1" position="-0.63 -5.6 6.01" radius="4">
+            <a-animation attribute="scale" from="0.1 0.1 0.1" to="0.2 0.2 0.2" repeat="indefinite" dur="3000" easing="ease" direction="alternate"></a-animation>
+          </a-circle>
+        </a-sky>
+
+
+        <a-sky visible="false"  src="#scene1_8" id="sky8" position="160 0 0" radius="10" >
+          <a-cone opacity="0.6" color="white" radius-bottom="0" radius-top="0.76" height="1.62" data-goTo="sky7" cursor-listener position="6.30 -1.6 2.53" >
+            <a-animation attribute="position" to="6.30 -2.6 2.53" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-circle color="#CCC" rotation="90 0 0" scale="0.1 0.1 0.1" position="6.30 -2.6 2.53" radius="4">
+            <a-animation attribute="scale" from="0.1 0.1 0.1" to="0.2 0.2 0.2" repeat="indefinite" dur="3000" easing="ease" direction="alternate"></a-animation>
+          </a-circle>
+
+          <a-cone opacity="0.6" color="white" radius-bottom="0" radius-top="0.76" height="1.62" data-goTo="sky9" cursor-listener position="3.16 -1.6 -5.00" >
+            <a-animation attribute="position" to="3.16 -2.6 -5.00" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-circle color="#CCC" rotation="90 0 0" scale="0.1 0.1 0.1" position="3.16 -5.6 -5.00" radius="4">
+            <a-animation attribute="scale" from="0.1 0.1 0.1" to="0.2 0.2 0.2" repeat="indefinite" dur="3000" easing="ease" direction="alternate"></a-animation>
+          </a-circle>
+
+          <a-cone opacity="0.6" color="white" radius-bottom="0" radius-top="0.76" height="1.62" data-goTo="sky4" cursor-listener position="-0.63 -1.6 6.01" >
+            <a-animation attribute="position" to="-0.63 -2.6 6.01" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-circle color="#CCC" rotation="90 0 0" scale="0.1 0.1 0.1" position="-0.63 -5.6 6.01" radius="4">
+            <a-animation attribute="scale" from="0.1 0.1 0.1" to="0.2 0.2 0.2" repeat="indefinite" dur="3000" easing="ease" direction="alternate"></a-animation>
+          </a-circle>
+        </a-sky>
+        <a-sky visible="false"  src="#scene1_9" id="sky9" position="180 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky8" cursor-listener position="7.07 -1.6 -4.29" >
+            <a-animation attribute="position" to="7.07 -2.6 -4.29" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false"   visible="false"  src="#scene1_10" id="sky10" position="200 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky4" cursor-listener position="6.04 -1.6 0" >
+            <a-animation attribute="position" to="6.04 -2.6 0" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky11" cursor-listener position="0.20 -1.6 6.59" >
+            <a-animation attribute="position" to="0.20 -2.6 6.59" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky25" cursor-listener position="-8 -1.6 0" >
+            <a-animation attribute="position" to="-8 -2.6 0" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_11" id="sky11" position="220 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky10" cursor-listener position="-4.84 -1.6 7.51" >
+            <a-animation attribute="position" to="-4.84 -2.6 7.51" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky12" cursor-listener position="-8 -1.6 2.53" >
+            <a-animation attribute="position" to="-8 -2.6 2.53" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_12" id="sky12" position="240 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky11" cursor-listener position="-4.91 -1.6 -6.11" >
+            <a-animation attribute="position" to="-4.91 -2.6 -6.11" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+            <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
+            <a-animation attribute="color" begin="mouseleave" dur="500" to="white"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_13" id="sky13" position="260 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky4" cursor-listener position="0.83 -4.47 -7.08" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky14" cursor-listener position="-8 -1.6 0" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_14" id="sky14" position="280 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky13" cursor-listener position="-7 -4.18 -4.17" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky15" cursor-listener position="-7.32 -1.6 4.35" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky21" cursor-listener position="1.56 -1.6 6.24" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky22" cursor-listener position="2.09 -1.6 -6.81" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_15" id="sky15" position="300 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky14" cursor-listener position="6.84 0 0 " >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky16" cursor-listener position="-3.27 0 -4.97" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky24" cursor-listener position="-7 0 -0.73" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_16" id="sky16" position="320 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky15" cursor-listener position="6.46 0 -3.93" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky17" cursor-listener position="-5.43 0 -3.81" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky24" cursor-listener position="-0.95 0 6.73" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_17" id="sky17" position="340 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky16" cursor-listener position="-8 0 0" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky18" cursor-listener position="1.66 0 7.13" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+
+        </a-sky>
+        <a-sky visible="false" src="#scene1_18" id="sky18" position="360 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky17" cursor-listener position="0.55 0 5.97" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky19" cursor-listener position="7.63 0 1.12" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_19" id="sky19" position="380 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky18" cursor-listener position="-7.17 0 4.82" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_21" id="sky21" position="400 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky14" cursor-listener position="-8 0 0" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_22" id="sky22" position="420 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky23" cursor-listener position="-7.72 0 -3.92" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky14" cursor-listener position="-8 0 2.27" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_23" id="sky23" position="440 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky16" cursor-listener position="5.50 0 -6.55" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_24" id="sky24" position="460 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky16" cursor-listener position="6.78 0 -3.06" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+        </a-sky>
+        <a-sky visible="false" src="#scene1_25" id="sky25" position="480 0 0" radius="10" >
+          <a-cone color="black" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky10" cursor-listener position="4.75 0 -5.19" >
+            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="1000" easing="ease-elastic" direction="alternate"></a-animation>
+          </a-cone>
+        </a-sky>
+      </a-scene>
+
+
+      <a style="display: none;" href="blob:https%3A//aframe.io/5fc971c2-a81f-46e4-876a-3c545f515bee" download="aframe-io-aframe-inspector-example"></a>
+
+
+
+   </body>
+</html>

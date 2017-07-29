@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Cache-control" content="public">
+
+  <title>Example Scene</title>
+  <script src="https://rawgit.com/aframevr/aframe/3620e8e/dist/aframe-master.min.js"></script>
+  <script src="./tracking.js-master/build/tracking-min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/camanjs/4.0.0/caman.full.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <script>
+    function NavigateTo(end) {
+      // console.log(end)
+      var end = document.getElementById(end).getAttribute('position');
+      var camera = document.getElementById('camera');
+      camera.setAttribute('position', end);
+    }
+    AFRAME.registerComponent('cursor-listener', {
+      init: function () {
+        this.el.addEventListener('click', function (evt) {
+
+          // console.log(evt)
+          NavigateTo(evt.detail.target.dataset.goto)
+          document.getElementById(evt.detail.target.dataset.goto).setAttribute("visible", "true");
+          evt.srcElement.parentElement.setAttribute("visible", "false");
+        });
+      }
+    });
+    AFRAME.registerComponent('sky', {
+      init: function () {
+        this.el.addEventListener('animationend', function (evt) {
+
+        });
+      }
+    });
+
+    AFRAME.registerComponent('pointr', {
+      schema: {
+        'radius-bottom': { type: 'number', default: 0 },
+        'radius-top': { type: 'number', default: 1 },
+        'height': { type: 'number', default: 1 },
+        'color': { type: 'color', default: 'tomato' },
+        'data-goTo': { type: 'string', default: 'sky4' },
+        'position': { type: 'string', default: '1 1 1' },
+      },
+      multiple: true
+    });
+
+  </script>
+</head>
+<body class="a-body aframe-inspector-opened">
+  <a-scene id="scene"  class="fullscreen" inspector="" keyboard-shortcuts="" 
+    screenshot="" vr-mode-ui="" auto-enter-vr="">
+    <a-assets>
+      <a-asset-item id="down-arrow-obj" src="./ResizedPhotos/Arrow1.obj"></a-asset-item>
+
+      <!--<img crossorigin src="./ResizedPhotos/scene1_1.jpg", id="scene1_1">
+        <img crossorigin src="./ResizedPhotos/scene1_2.jpg", id="scene1_2">-->
+      <img crossorigin src="./ResizedPhotos/scene1_3.jpg" , id="scene1_3">
+    </a-assets>
+
+    <a-sky color="#3c3c3c" position="" rotation="" scale="" visible="" material="" geometry=""></a-sky>
+    <a-entity light="type: ambient; color: #BBB"></a-entity>
+
+    <a-entity camera id='camera' look-controls position="0 0 0">
+      <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+        material="color: blue; shader: flat">
+        <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="2000"></a-animation>
+        <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="forwards" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
+      </a-entity>
+    </a-entity>
+    <a-sky visible="true" src="#scene1_3" id="sky3" position="0 0 0" radius="10" rotation="0 -90 0">
+      <a-cone color="tomato" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky4" cursor-listener position="-5.86 -1.6 1.32">
+        <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" repeat="indefinite" dur="2000" easing="ease-elastic" direction="alternate"></a-animation>
+      </a-cone>
+
+      <!--<a-entity pointr="'radius-bottom':0; 'radius-top':1; 'height':1; color:'tomato'; 'data-goTo':'sky4'; position:'1 1 1'"></a-entity>-->
+      <!-- <a-cone color="tomato" radius-bottom="0" radius-top="0.38" height="0.76" data-goTo="sky2" cursor-listener position="0.62 0 6.13" ></a-cone> -->
+    </a-sky>
+  </a-scene>
+  </div>
+
+
+  <script>
+
+      document.querySelector('a-scene').addEventListener('loaded', function () {
+
+        document.querySelector('a-scene').canvas.setAttribute('is','canvas-color-tracking');
+        document.querySelector('a-scene').canvas.setAttribute('target','magenta cyan yellow');
+        document.querySelector('a-scene').canvas.setAttribute('id','canvas');
+
+        var cv = document.querySelector('a-scene').components.canvas
+        console.log(cv)
+        var colors = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);
+        
+        colors.on('track', function (event) {
+          if (event.data.length === 0) {
+            console.log("no colors")
+          } else {
+            event.data.forEach(function (rect) {
+              console.log(rect.x, rect.y, rect.height, rect.width, rect.color);
+            });
+          }
+        });
+        tracking.track('canvas', colors);
+
+
+      });
+
+
+
+      function placeYelllowSphere(x,y,z){
+          var s = document.createElement('a-sphere');
+          s.setAttribute('color', 'yellow');
+          s.setAttribute('position', x+' '+y+' '+z);
+          s.setAttribute('radius', '.1');
+          document.querySelector('#sky3').appendChild(s);
+
+      }
+
+
+
+
+  </script>
+
+  <a style="display: none;" href="blob:https%3A//aframe.io/5fc971c2-a81f-46e4-876a-3c545f515bee" download="aframe-io-aframe-inspector-example"></a>
+
+
+
+</body>
+
+</html>
