@@ -3,14 +3,16 @@
       <meta charset="utf-8" />
       <meta http-equiv="Cache-control" content="public">
 
-      <title>Example Scene</title>
+      <title>Scene1</title>
       <link rel="manifest" href="/manifest.json">
-      <script src="https://rawgit.com/aframevr/aframe/3620e8e/dist/aframe-master.min.js"></script>
-      <script src="https://rawgit.com/takahirox/aframe-outline/master/build/aframe-outline.min.js"></script>
-      <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
+      <script src="../assets/aframe.min.js"></script>
+      <script src="../assets/aframe-outline.min.js"></script>
+      <script src="../assets/jquery-3.2.1.min.js"></script>
+      <script src="./script.js"></script>
+
+
+
+
       <script>
         function NavigateTo(end){
           // console.log(end)
@@ -44,33 +46,33 @@
    <body class="a-body aframe-inspector-opened">
       <a-scene outline="color: #000;" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" auto-enter-vr="">
       <a-assets>
-        <a-asset-item id="down-arrow-obj" src="./ResizedPhotos/Arrow1.obj"></a-asset-item>
+        <a-asset-item id="down-arrow-obj" src="../ResizedPhotos/Arrow1.obj"></a-asset-item>
 
-        <img crossorigin src="./ResizedPhotos/scene1_1.jpg", id="scene1_1">
-        <img crossorigin src="./ResizedPhotos/scene1_2.jpg", id="scene1_2">
-        <img crossorigin src="./ResizedPhotos/scene1_3.jpg", id="scene1_3">
-        <img crossorigin src="./ResizedPhotos/scene1_4.jpg", id="scene1_4">
-        <img crossorigin src="./ResizedPhotos/scene1_5.jpg", id="scene1_5">
-        <img crossorigin src="./ResizedPhotos/scene1_6.jpg", id="scene1_6">
-       <img crossorigin src="./ResizedPhotos/scene1_7.jpg", id="scene1_7">
-        <img crossorigin src="./ResizedPhotos/scene1_8.jpg", id="scene1_8">
-        <img crossorigin src="./ResizedPhotos/scene1_9.jpg", id="scene1_9">
-        <img crossorigin src="./ResizedPhotos/scene1_10.jpg", id="scene1_10">
-        <img crossorigin src="./ResizedPhotos/scene1_11.jpg", id="scene1_11">
-        <img crossorigin src="./ResizedPhotos/scene1_12.jpg", id="scene1_12">
-        <img crossorigin src="./ResizedPhotos/scene1_13.jpg", id="scene1_13">
-        <img crossorigin src="./ResizedPhotos/scene1_14.jpg", id="scene1_14">
-        <img crossorigin src="./ResizedPhotos/scene1_15.jpg", id="scene1_15">
-        <img crossorigin src="./ResizedPhotos/scene1_16.jpg", id="scene1_16">
-        <img crossorigin src="./ResizedPhotos/scene1_17.jpg", id="scene1_17">
-        <img crossorigin src="./ResizedPhotos/scene1_18.jpg", id="scene1_18">
-        <img crossorigin src="./ResizedPhotos/scene1_19.jpg", id="scene1_19">
-        <img crossorigin src="./ResizedPhotos/scene1_21.jpg", id="scene1_21">
-        <img crossorigin src="./ResizedPhotos/scene1_22.jpg", id="scene1_22">
-        <img crossorigin src="./ResizedPhotos/scene1_23.jpg", id="scene1_23">
-        <img crossorigin src="./ResizedPhotos/scene1_24.jpg", id="scene1_24">
-        <img crossorigin src="./ResizedPhotos/scene1_25.jpg", id="scene1_25">
-        <img id="boxTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+        <img crossorigin src="../ResizedPhotos/scene1_1.jpg", id="scene1_1">
+        <img crossorigin src="../ResizedPhotos/scene1_2.jpg", id="scene1_2">
+        <img crossorigin src="../ResizedPhotos/scene1_3.jpg", id="scene1_3">
+        <img crossorigin src="../ResizedPhotos/scene1_4.jpg", id="scene1_4">
+        <img crossorigin src="../ResizedPhotos/scene1_5.jpg", id="scene1_5">
+        <img crossorigin src="../ResizedPhotos/scene1_6.jpg", id="scene1_6">
+       <img crossorigin src="../ResizedPhotos/scene1_7.jpg", id="scene1_7">
+        <img crossorigin src="../ResizedPhotos/scene1_8.jpg", id="scene1_8">
+        <img crossorigin src="../ResizedPhotos/scene1_9.jpg", id="scene1_9">
+        <img crossorigin src="../ResizedPhotos/scene1_10.jpg", id="scene1_10">
+        <img crossorigin src="../ResizedPhotos/scene1_11.jpg", id="scene1_11">
+        <img crossorigin src="../ResizedPhotos/scene1_12.jpg", id="scene1_12">
+        <img crossorigin src="../ResizedPhotos/scene1_13.jpg", id="scene1_13">
+        <img crossorigin src="../ResizedPhotos/scene1_14.jpg", id="scene1_14">
+        <img crossorigin src="../ResizedPhotos/scene1_15.jpg", id="scene1_15">
+        <img crossorigin src="../ResizedPhotos/scene1_16.jpg", id="scene1_16">
+        <img crossorigin src="../ResizedPhotos/scene1_17.jpg", id="scene1_17">
+        <img crossorigin src="../ResizedPhotos/scene1_18.jpg", id="scene1_18">
+        <img crossorigin src="../ResizedPhotos/scene1_19.jpg", id="scene1_19">
+        <img crossorigin src="../ResizedPhotos/scene1_21.jpg", id="scene1_21">
+        <img crossorigin src="../ResizedPhotos/scene1_22.jpg", id="scene1_22">
+        <img crossorigin src="../ResizedPhotos/scene1_23.jpg", id="scene1_23">
+        <img crossorigin src="../ResizedPhotos/scene1_24.jpg", id="scene1_24">
+        <img crossorigin src="../ResizedPhotos/scene1_25.jpg", id="scene1_25">
+        <!--<img id="boxTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">-->
 
 
             <a-mixin id="cone" material="color: red"></a-mixin>
@@ -120,7 +122,7 @@
 
 
         <a-sky  visible="true" src="#scene1_3" id="sky3" position="40 0 0" radius="10" >
-          <a-cone opacity="0.6" color="white" radius-bottom="0" radius-top="0.76" height="1.62" data-goTo="sky4" cursor-listener position="-5.239 -1.004 1.092" >
+          <a-cone touch-point data-goTo="sky4" cursor-listener position="-5.239 -1.004 1.092" >
             <!--<a-animation attribute="scale" from="1 1 1" to="0.8 0.8 0.8" repeat="indefinite" dur="3000" easing="ease-elastic" direction="alternate"></a-animation>-->
             <a-animation attribute="position" to="-5.239 -2 1.092" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
             <a-animation attribute="color" begin="mouseenter" dur="500" to="yellow"></a-animation>
